@@ -15,6 +15,11 @@ contract Dappazon {
         uint256 stock;
     }
 
+    struct Order {
+        uint256 time;
+        Item item;
+    }
+
     mapping(uint256 => Item) public items;
 
     event List(string name, uint256 cost, uint256 quantity);
@@ -61,7 +66,7 @@ contract Dappazon {
 
     // Buy products
     function buy(uint256 _id) public payable {
-        
+        Order memory _order = Order(block.timestamp, items[_id]);
     }
 
     // Withdraw funds
